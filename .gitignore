@@ -1,0 +1,16 @@
+# Developer-specific configuration
+.idea/
+.npmrc
+.vscode
+# Build output
+coverage/
+dist/
+node_modules/
+reports/
+.holonis/
+.nyc_output/
+# Log files
+yarn-error.log
+lerna-debug.log
+# Temp files
+*.swp

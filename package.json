@@ -1,0 +1,36 @@
+{
+  "name": "@holonis/core-app",
+  "version": "1.0.0",
+  "description": "TBD",
+  "main": "src/index.js",
+  "files": [
+    "src/"
+  ],
+  "devDependencies": {
+    "@holonis/core-build-tools": "^1.0.1",
+    "@holonis/core-test-kit": "^1.0.1",
+    "husky": "2.2.0"
+  },
+  "scripts": {
+    "commit": "git-cz",
+    "lint": "hol_lint",
+    "lint:ci": "hol_lint_ci",
+    "release": "hol_package_release",
+    "test": "hol_coverage",
+    "test:ci": "hol_coverage_ci"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "author": "Holonis <devs@holonis.com>",
+  "keywords": [],
+  "license": "UNLICENSED",
+  "repository": "github:Holonis/core-app-globals",
+  "husky": {
+    "hooks": {
+      "pre-push": "npm install && npm run lint && npm test",
+      "pre-commit": "npm install && npm run lint && npm test",
+      "commit-msg": "hol_commitlint"
+    }
+  }
+}

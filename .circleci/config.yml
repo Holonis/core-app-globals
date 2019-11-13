@@ -1,0 +1,83 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+
+orbs:
+  inline:
+    commands:
+      bootstrap:
+        steps:
+          - checkout
+
+          - run:
+              name: Inject NPM access token
+              command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+
+          - run:
+              name: Install dependences
+              command: npm install
+
+jobs:
+  build:
+    docker:
+      - image: 233361885492.dkr.ecr.us-west-2.amazonaws.com/holonis-docker:1.3.0
+
+    working_directory: ~/repo
+
+    steps:
+      - inline/bootstrap
+
+      - run:
+          name: Checking code with ESLint
+          command: npm run lint:ci
+
+      - store_artifacts:
+          path: reports/eslint
+          destination: eslint
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - node_modules
+            - packages/*/node_modules
+            - .npmrc
+
+      - run:
+          name: Unit Tests
+          command: npm run test:ci
+
+      - store_test_results:
+          path: reports/mocha
+
+      - store_artifacts:
+          path: coverage
+          destination: coverage
+
+  release:
+    docker:
+      - image: 233361885492.dkr.ecr.us-west-2.amazonaws.com/holonis-docker:1.3.0
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/repo
+
+      - run:
+          name: Collect changes, choose version number, publish and update git repo
+          command: npm run release
+
+workflows:
+  pipeline:
+    jobs:
+      - build
+      - release:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
