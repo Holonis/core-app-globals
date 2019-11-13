@@ -2,27 +2,26 @@ const REQUIRE_PATH = '../../src/index';
 
 const { expect, proxyquire, stubs } = require('@holonis/core-test-kit');
 
-const appRootPath = stubs.objectStub('appRootPath', 'require');
 let subject;
 
 describe('core-app index', () => {
   beforeEach('reset the subject', () => {
-    stubs.appRootPath.require.withArgs('/package.json').returns({ name: 'THE_NAME', version: 'THE_VERSION' });
+    subject = proxyquire(REQUIRE_PATH, {});
   });
 
   afterEach('reset stubs', () => {
     stubs.reset();
   });
 
-  it('must have the application name from package.json', () => {
-    subject = proxyquire(REQUIRE_PATH, { 'app-root-path': appRootPath });
+  it('must remember and return the log we set', () => {
+    subject.setLog('THE_LOG');
 
-    expect(subject).to.have.a.property('name').that.equals('THE_NAME');
+    expect(subject.getLog()).to.equal('THE_LOG');
   });
 
-  it('must have the application version from package.json', () => {
-    subject = proxyquire(REQUIRE_PATH, { 'app-root-path': appRootPath });
+  it('must remember and return the config we set', () => {
+    subject.setConfig('THE_CONFIG');
 
-    expect(subject).to.have.a.property('version').that.equals('THE_VERSION');
+    expect(subject.getConfig()).to.equal('THE_CONFIG');
   });
 });
