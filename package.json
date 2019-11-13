@@ -1,14 +1,14 @@
 {
   "name": "@holonis/core-app",
-  "version": "1.0.0",
-  "description": "TBD",
+  "version": "0.1.0",
+  "description": "A holder for important, sharable app parts like the logger and config objects",
   "main": "src/index.js",
   "files": [
     "src/"
   ],
   "devDependencies": {
-    "@holonis/core-build-tools": "^1.0.1",
-    "@holonis/core-test-kit": "^1.0.1",
+    "@holonis/core-build-tools": "^1.5.0",
+    "@holonis/core-test-kit": "^1.1.0",
     "husky": "2.2.0"
   },
   "scripts": {
@@ -28,8 +28,8 @@
   "repository": "github:Holonis/core-app-globals",
   "husky": {
     "hooks": {
-      "pre-push": "npm install && npm run lint && npm test",
-      "pre-commit": "npm install && npm run lint && npm test",
+      "pre-push": "hol_validate",
+      "pre-commit": "hol_validate",
       "commit-msg": "hol_commitlint"
     }
   }
