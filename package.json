@@ -1,6 +1,6 @@
 {
   "name": "@holonis/core-app-globals",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A holder for important, sharable app parts like the logger and config objects",
   "main": "src/index.js",
   "files": [

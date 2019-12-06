@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/Holonis/core-app-globals/compare/0.1.1...1.1.0) (2019-12-06)
+
+
+### Features
+
+* add kafkaProperties support ([9979e77](https://github.com/Holonis/core-app-globals/commit/9979e773d6714e6c4713e6496617eb9abb4f33e1))
+
 ### 0.1.1 (2019-11-14)
 
 
