@@ -1,27 +1,5 @@
-class Globals {
-  constructor() {
-    let globalConfig;
-    let globalKafkaProperties;
-    let globalLog;
+const AppGlobals = require('./AppGlobals');
 
-    this.getConfig = () => globalConfig;
+global.___appGlobals = global.___appGlobals || new AppGlobals();
 
-    this.getKafkaProperties = () => globalKafkaProperties;
-
-    this.getLog = () => globalLog;
-
-    this.setConfig = (config) => {
-      globalConfig = config;
-    };
-
-    this.setKafkaProperties = (kafkaProperties) => {
-      globalKafkaProperties = kafkaProperties;
-    };
-
-    this.setLog = (log) => {
-      globalLog = log;
-    };
-  }
-}
-
-module.exports = new Globals();
+module.exports = global.___appGlobals;

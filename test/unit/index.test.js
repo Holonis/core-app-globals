@@ -4,30 +4,26 @@ const { expect, proxyquire, stubs } = require('@holonis/core-test-kit');
 
 let subject;
 
-describe('core-app index', () => {
-  beforeEach('reset the subject', () => {
-    subject = proxyquire(REQUIRE_PATH, {});
-  });
-
+describe('index', () => {
   afterEach('reset stubs', () => {
     stubs.reset();
   });
 
-  it('must remember and return the config we set', () => {
-    subject.setConfig('THE_CONFIG');
+  it('must return the existing globals if they are there', () => {
+    global.___appGlobals = 'THE_EXISTING_APP_GLOBALS';
+    subject = proxyquire(REQUIRE_PATH, {
+      './AppGlobals': stubs.classStub('AppGlobals'),
+    });
 
-    expect(subject.getConfig()).to.equal('THE_CONFIG');
+    expect(subject).to.equal('THE_EXISTING_APP_GLOBALS');
   });
 
-  it('must remember and return the kafkaProperties we set', () => {
-    subject.setKafkaProperties('THE_KAFKA_PROPERTIES');
+  it('must return the a newly defined globals if there is not one already', () => {
+    global.___appGlobals = undefined;
+    subject = proxyquire(REQUIRE_PATH, {
+      './AppGlobals': stubs.classStub('AppGlobals'),
+    });
 
-    expect(subject.getKafkaProperties()).to.equal('THE_KAFKA_PROPERTIES');
-  });
-
-  it('must remember and return the log we set', () => {
-    subject.setLog('THE_LOG');
-
-    expect(subject.getLog()).to.equal('THE_LOG');
+    expect(subject).to.equal(global.___appGlobals);
   });
 });
