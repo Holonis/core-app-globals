@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/Holonis/core-app-globals/compare/1.2.0...1.2.2) (2019-12-21)
+
+### [1.2.1](https://github.com/Holonis/core-app-globals/compare/1.2.0...1.2.1) (2019-12-21)
+
 ## [1.2.0](https://github.com/Holonis/core-app-globals/compare/1.1.0...1.2.0) (2019-12-19)
 
 
