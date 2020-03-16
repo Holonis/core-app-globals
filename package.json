@@ -1,5 +1,5 @@
 {
-  "name": "@holonis.com/core-app-globals",
+  "name": "@holonis/core-app-globals",
   "version": "1.2.2",
   "description": "A holder for important, sharable app parts like the logger and config objects",
   "main": "src/index.js",
@@ -7,8 +7,8 @@
     "src/"
   ],
   "devDependencies": {
-    "@holonis.com/core-build-tools": "^1.5.0",
-    "@holonis.com/core-test-kit": "^1.1.0",
+    "@holonis/core-build-tools": "^1.5.0",
+    "@holonis/core-test-kit": "^1.1.0",
     "husky": "2.2.0"
   },
   "scripts": {
