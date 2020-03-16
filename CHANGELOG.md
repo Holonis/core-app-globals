@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/Holonis/core-app-globals/compare/1.2.2...1.2.3) (2020-03-16)
+
+
+### Bug Fixes
+
+* return pkg to holonis from holonis.com ([a86f8fb](https://github.com/Holonis/core-app-globals/commit/a86f8fb34e4fea483a32ad9467be7d004f16ba66))
+
 ### [1.2.2](https://github.com/Holonis/core-app-globals/compare/1.2.0...1.2.2) (2019-12-21)
 
 ### [1.2.1](https://github.com/Holonis/core-app-globals/compare/1.2.0...1.2.1) (2019-12-21)
